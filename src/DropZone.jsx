@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 
-const DropZone = ({ onDrop, value }) => {
+const DropZone = ({ onDrop}) => {
+  const [value, setValue] = useState('');
   const [{ isOver }, drop] = useDrop(() => ({
     accept: 'item',
-    drop: (item) => onDrop(item),
+    drop: (item) => {onDrop(item);
+      console.log('item', item)
+      setValue(item.name);
+    },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),
   }));
 
-  const [inputValue, setInputValue] = useState('');
 
-  React.useEffect(() => {
-    setInputValue(value);
-  }, [value]);
 
   return (
     <div
@@ -24,9 +24,10 @@ const DropZone = ({ onDrop, value }) => {
         padding: '10px',
       }}>
       <label>Drop Here</label>
-      <input type="text" value={inputValue} readOnly />
+      <input type="text" value={value} readOnly />
     </div>
   );
 };
 
 export default DropZone;
+
