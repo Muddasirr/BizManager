@@ -3,8 +3,35 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import DragItem from './DragItem';
 import DropZone from './DropZone';
-
+import chroma from 'chroma-js'
+import { useEffect } from 'react';
 const App = () => {
+
+
+useEffect(() => {
+    const colors = ['#FF0000', '#800000', '#FF6347', '#FFA07A', '#008000', '#0000FF'];
+    const targetColorName = 'red';
+    const threshold = 50; 
+    const similarColors = filterColorsBySimilarity(colors, targetColorName, threshold);
+    console.log(similarColors);
+}, []);
+  function colorNameToHex(colorName) {
+      return chroma(colorName).hex();
+  }
+  
+  
+  function filterColorsBySimilarity(colors, targetColorName, threshold = 50) {
+      const targetColor = chroma(targetColorName);
+  
+      return colors.filter(color => {
+          const distance = chroma.distance(chroma(color), targetColor);
+          return distance <= threshold;
+      });
+  }
+  
+
+  
+
   const [Json, setJson] = useState({
     name: "String",
     F: {
