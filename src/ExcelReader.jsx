@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ColorPaletteBuilder from './colorcreator'
 import {
     AppBar,
     Toolbar,
@@ -17,16 +18,10 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
     marginTop: '16px',
     borderRadius: '8px',
     overflow: 'hidden',
-    boxShadow: theme.shadows[3],
+ 
 }));
 
-const StyledTableHead = styled(TableHead)(({ theme }) => ({
-    backgroundColor: theme.palette.primary.main,
-    '& .MuiTableCell-root': {
-        color: theme.palette.common.white,
-        fontWeight: 'bold',
-    },
-}));
+
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
@@ -82,9 +77,10 @@ const ExcelReader = () => {
                     placeholder="Search by Product Name, Type, or Generic" 
                 />
             </div>
+            <ColorPaletteBuilder />
             <StyledTableContainer component={Paper}>
                 <Table>
-                    <StyledTableHead>
+                    
                         <TableRow>
                             <TableCell>Product Name</TableCell>
                             <TableCell>Type</TableCell>
@@ -95,7 +91,7 @@ const ExcelReader = () => {
                             <TableCell>Width (mm)</TableCell>
                             <TableCell>Height (mm)</TableCell>
                         </TableRow>
-                    </StyledTableHead>
+                   
                     <TableBody>
                         {filteredData.map((row, index) => (
                             <StyledTableRow key={index}>
