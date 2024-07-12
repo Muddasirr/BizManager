@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 
-const DropZone = ({ onDrop}) => {
+const DropZone = () => {
   const [value, setValue] = useState('');
   const [{ isOver }, drop] = useDrop(() => ({
     accept: 'item',
-    drop: (item) => {onDrop(item);
+    drop: (item) => {
       console.log('item', item)
       setValue(item.name);
     },

@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import axios from 'axios';
-import ColorPaletteBuilder from './colorcreator'
+import ColorPaletteBuilder from './colorcreator';
+import ProductTable from './Product-Table';
+
 import {
     AppBar,
     Toolbar,
@@ -11,6 +13,11 @@ import {
     TableHead,
     TableRow,
     Paper,
+    Container,
+    Box,
+    Button,
+    Dialog,
+    DialogActions, DialogContent, DialogTitle
 } from '@mui/material';
 import { styled } from '@mui/system';
 
@@ -23,16 +30,11 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
 
 
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-    },
-    '&:hover': {
-        backgroundColor: theme.palette.action.selected,
-    },
-}));
+
 
 const ExcelReader = () => {
+  
+    
     const [query, setQuery] = useState('');
     const [filteredData, setFilteredData] = useState([]);
     const [data, setData] = useState([]);
@@ -61,6 +63,10 @@ const ExcelReader = () => {
         ));
     };
 
+
+
+
+
     return (
         <div>
             <AppBar position="static">
@@ -77,39 +83,16 @@ const ExcelReader = () => {
                     placeholder="Search by Product Name, Type, or Generic" 
                 />
             </div>
-            <ColorPaletteBuilder />
-            <StyledTableContainer component={Paper}>
-                <Table>
-                    
-                        <TableRow>
-                            <TableCell>Product Name</TableCell>
-                            <TableCell>Type</TableCell>
-                            <TableCell>Generic</TableCell>
-                            <TableCell>Color</TableCell>
-                            <TableCell>Shape</TableCell>
-                            <TableCell>Weight (mg)</TableCell>
-                            <TableCell>Width (mm)</TableCell>
-                            <TableCell>Height (mm)</TableCell>
-                        </TableRow>
-                   
-                    <TableBody>
-                        {filteredData.map((row, index) => (
-                            <StyledTableRow key={index}>
-                                <TableCell>{row.product_name}</TableCell>
-                                <TableCell>{row.type}</TableCell>
-                                <TableCell>{row.generic}</TableCell>
-                                <TableCell>{row.color}</TableCell>
-                                <TableCell>{row.shape}</TableCell>
-                                <TableCell>{row.weight_mg}</TableCell>
-                                <TableCell>{row.width_mm}</TableCell>
-                                <TableCell>{row.height_mm}</TableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </StyledTableContainer>
+           
+          
+          <ColorPaletteBuilder />
+        
+            <ProductTable products={filteredData} />
         </div>
     );
 };
 
 export default ExcelReader;
+
+
+
