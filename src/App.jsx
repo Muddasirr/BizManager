@@ -1,8 +1,8 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import ExcelReader from './ExcelReader';
-import CardData from './components/CardData';
-import JsonEditorComponent from './components/Json';
-import MyComponent from './components/Json';
+
+import HeaderMappings from './Headermapping';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 const theme = createTheme({
   palette: {
     primary: {
@@ -16,7 +16,10 @@ const theme = createTheme({
 
 const App = () => (
   <ThemeProvider theme={theme}>
-<ExcelReader/>
+    <DndProvider backend={HTML5Backend}>
+   
+    <HeaderMappings/>
+    </DndProvider>
   </ThemeProvider>
 );
 

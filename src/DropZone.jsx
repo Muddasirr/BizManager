@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 
-const DropZone = () => {
+const DropZone = ({onDrop}) => {
   const [value, setValue] = useState('');
   const [{ isOver }, drop] = useDrop(() => ({
     accept: 'item',
     drop: (item) => {
-      console.log('item', item)
+
+    onDrop(item);
       setValue(item.name);
+      
+      
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -19,12 +22,9 @@ const DropZone = () => {
   return (
     <div
       ref={drop}
-      style={{
-        border: `1px dashed ${isOver ? 'green' : 'black'}`,
-        padding: '10px',
-      }}>
-      <label>Drop Here</label>
-      <input type="text" value={value} readOnly />
+     >
+    <input type="text" value={value} style={{background:'#cceeff',border:'none', width:"200px"}} />
+      
     </div>
   );
 };
