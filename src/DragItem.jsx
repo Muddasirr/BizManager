@@ -16,13 +16,14 @@ const DragItem = ({ name }) => {
     <div
       ref={drag}
       style={{
-        opacity: isDragging ? 0.5 : 1,
+        
         cursor: 'move',
         border: '1px solid #ccc',
         padding: '10px',
         borderRadius: '5px',
         margin: '5px',
         backgroundColor: 'lightblue',
+        opacity: 1
       }}>
       {name}
     </div>
