@@ -8,13 +8,18 @@ const initialResponse = {
     { source: "deduction_dental", target: "Deductions_Target_Header_1" },
     { source: "deduction_life_insurance", target: "" },
     { source: "deduction_medical_family", target: "" },
-    { source: "deduction_medical_employe", target: "" }
+    { source: "deduction_medical_employe", target: "" },
+    { source: "deduction_medical_nonemploye", target: "" },
+    { source: "deduction_medical_xyz", target: "" }
   ],
   available: [
     "Deductions_Target_Header_1",
     "Deductions_Target_Header_2",
     "Deductions_Target_Header_3",
-    "Deductions_Target_Header_4"
+    "Deductions_Target_Header_4",
+    "Deductions_Target_Header_5",
+    "Deductions_Target_Header_6",
+    "Deductions_Target_Header_8",
   ]
 };
 
@@ -22,16 +27,20 @@ const HeaderMappings = () => {
   const [response, setResponse] = useState(initialResponse);
 
   const handleDrop = (item, index) => {
+    console.log(response.mappings);
     setResponse(prevResponse => {
       const newMappings = [...prevResponse.mappings];
       newMappings[index].target = item.name;
-
+      console.log(newMappings);
       return {
         ...prevResponse,
         mappings: newMappings
       };
     });
- };
+  };
+
+  // Determine the maximum length to render all rows
+  const maxLength = Math.max(response.mappings.length, response.available.length);
 
   return (
     <Box sx={{ padding: 3 }}>
@@ -48,21 +57,27 @@ const HeaderMappings = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {response.mappings.map((row, index) => (
+            {[...Array(maxLength)].map((_, index) => (
               <TableRow key={index}>
                 <TableCell>
-                  <Box sx={{ backgroundColor: '#ffcccc', padding: 1, borderRadius: 1 }}>
-                    {row.source}
-                  </Box>
+                  {response.mappings[index] ? (
+                    <Box sx={{ backgroundColor: '#ffcccc', padding: 1, borderRadius: 1 }}>
+                      {response.mappings[index].source}
+                    </Box>
+                  ) : null}
                 </TableCell>
                 <TableCell>
-                  <Box sx={{ backgroundColor: '#cceeff', padding: 1, borderRadius: 1 }}>
-                    <DropZone onDrop={(item) => handleDrop(item, index)} />
+                  {response.mappings[index] ? (
                     
-                  </Box>
+                   
+                      <DropZone  name={response.mappings[index].target} onDrop={(item) => handleDrop(item, index)} />
+                
+                  ) : null}
                 </TableCell>
                 <TableCell>
-                <DragItem name={response.available[index]} />
+                  {response.available[index] ? (
+                    <DragItem name={response.available[index]} />
+                  ) : null}
                 </TableCell>
               </TableRow>
             ))}
