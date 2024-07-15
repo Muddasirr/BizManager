@@ -1,10 +1,8 @@
-//DragItem.js
-
 import React from 'react';
 import { useDrag } from 'react-dnd';
 
 const DragItem = ({ name }) => {
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const [{ isDragging }, drag, preview] = useDrag(() => ({
     type: 'item',
     item: { name },
     collect: (monitor) => ({
@@ -13,20 +11,31 @@ const DragItem = ({ name }) => {
   }));
 
   return (
-    <div
-      ref={drag}
-      style={{
+    <>
+     
+      <div
+        ref={drag}
+        style={{
+          display: 'inline-block',
         
-        cursor: 'move',
-        border: '1px solid #ccc',
-        padding: '10px',
-        borderRadius: '5px',
-        margin: '5px',
-        backgroundColor: 'lightblue',
-        opacity: 1
-      }}>
-      {name}
-    </div>
+        }}
+      >
+        <div
+          style={{
+            opacity: 1, 
+            cursor: 'move',
+            border: '1px solid #ccc',
+            padding: '10px',
+            borderRadius: '5px',
+            margin: '5px',
+            backgroundColor: 'lightblue',
+            width: '150%',
+          }}
+        >
+          <b>{name}</b>
+        </div>
+      </div>
+    </>
   );
 };
 
