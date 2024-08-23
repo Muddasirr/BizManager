@@ -6,16 +6,7 @@ import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 
 const LoginForm = () => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
-  };
-
+ 
   return (
     <Box display='flex'>
       <Box bgcolor='#AED1E1' sx={{borderTopRightRadius:'100px',borderBottomRightRadius:'100px'}}  height='100vh' width={'30vw'}>
