@@ -4,7 +4,7 @@ import LoginForm from './Login'
 
 
 const App = () => (
-  <LoginForm />
+  <Dashboard />
 );
 
 export default App;
