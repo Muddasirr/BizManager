@@ -40,7 +40,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <Box display='flex' padding={2} flexDirection='column' width='20vw' bgcolor="#2F39B6" minHeight="100vh">
+    <Box display='flex' padding={2} flexDirection='column' width='15vw' bgcolor="#2F39B6" minHeight="100vh">
       <Box p={2} bgcolor='white' textAlign="center">
         <Typography fontSize={'12px'} fontWeight={'600'} variant="h6">Logo</Typography>
       </Box>
