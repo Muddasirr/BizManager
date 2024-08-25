@@ -189,9 +189,7 @@ const MyStepper = () => {
   return (
     <Box display='flex'>
 
-      <Box>
-        <Sidebar/>
-      </Box>
+      
 <Box width='100%'>
   <Navbar/>
     <Box sx={{  width:'50%',margin: 'auto', mt: 5,background:'F' }}>

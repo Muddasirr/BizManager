@@ -6,7 +6,7 @@ import MyStepper from './NewClient';
 
 
 const App = () => (
-  <Dashboard />
+  <MyStepper />
 );
 
 export default App;
