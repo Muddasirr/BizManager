@@ -96,7 +96,7 @@ const Dashboard = () => {
               <Button   sx={{background:'white',border:' 1px #D0D5DD solid', color:'#344054',textTransform:'none',borderRadius:'10px'}}>View report</Button>
               </Box>
               <Box mt={3}>
-                <Typography>12 months</Typography>
+                
                 <Box height='50%'  >
                   <SalesReportChart/>
                   </Box>
