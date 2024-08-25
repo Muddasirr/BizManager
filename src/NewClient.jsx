@@ -1,4 +1,5 @@
 import React from 'react';
+import Sidebar from './Sidebar';
 import {
   Box,
   Button,
@@ -11,6 +12,7 @@ import {
   MenuItem,
 } from '@mui/material';
 import { AccountBox, Group, FolderOpen, Logout,ArrowUpwardOutlined,CircleRounded, CircleOutlined } from '@mui/icons-material';
+import Navbar from './NavBar';
 
 const MyStepper = () => {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -185,7 +187,15 @@ const MyStepper = () => {
 
 
   return (
-    <Box sx={{ maxWidth: 600, margin: 'auto', mt: 5,background:'white' }}>
+    <Box display='flex'>
+
+      <Box>
+        <Sidebar/>
+      </Box>
+<Box width='100%'>
+  <Navbar/>
+    <Box sx={{  width:'50%',margin: 'auto', mt: 5,background:'F' }}>
+      
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((step, index) => (
           <Step key={step.label}>
@@ -232,6 +242,9 @@ const MyStepper = () => {
         </Paper>
       )}
     </Box>
+    </Box>
+    </Box>
+    
   );
 };
 

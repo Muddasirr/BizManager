@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-import { Box, Typography, styled } from '@mui/material';
-import { AccountBoxOutlined, GroupOutlined, FolderOpenOutlined, LogoutOutlined } from '@mui/icons-material';
-
+import { Box, Typography, styled, Drawer, IconButton } from '@mui/material';
+import { AccountBoxOutlined, GroupOutlined, FolderOpenOutlined, LogoutOutlined, Menu as MenuIcon, ArrowLeftOutlined } from '@mui/icons-material';
 
 const SidebarTypography = styled(Typography)(({ theme }) => ({
   fontSize: '12px',
   fontWeight: 600,
-  
-
 }));
 
 const SidebarBox = styled(Box)(({ theme, active }) => ({
- height:'2vh',
+  height: '2vh',
   display: 'flex',
   gap: theme.spacing(1),
   justifyContent: 'flex-start',
@@ -20,7 +17,7 @@ const SidebarBox = styled(Box)(({ theme, active }) => ({
   cursor: 'pointer',
   backgroundColor: active ? 'white' : 'transparent',
   color: active ? '#2F39B6' : 'white',
-  borderRadius: active ? 10: 0,
+  borderRadius: active ? 10 : 0,
   '& svg': {
     color: active ? '#2F39B6' : 'white',
   },
@@ -31,6 +28,7 @@ const SidebarBox = styled(Box)(({ theme, active }) => ({
 
 const Sidebar = () => {
   const [activeItem, setActiveItem] = useState('Dashboard');
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const menuItems = [
     { name: 'Dashboard', icon: <AccountBoxOutlined /> },
@@ -39,28 +37,53 @@ const Sidebar = () => {
     { name: 'View Files', icon: <FolderOpenOutlined /> },
   ];
 
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
   return (
-    <Box display='flex' padding={2} flexDirection='column' width='15vw' bgcolor="#2F39B6" minHeight="100vh">
-      <Box p={2} bgcolor='white' textAlign="center">
-        <Typography fontSize={'12px'} fontWeight={'600'} variant="h6">Logo</Typography>
-      </Box>
-      <Box mt={4}>
-        {menuItems.map((item) => (
-          <SidebarBox
-            key={item.name}
-            active={activeItem === item.name}
-            onClick={() => setActiveItem(item.name)}
-          >
-            {item.icon}
-            <SidebarTypography  variant="h6">{item.name}</SidebarTypography>
+    <>
+
+      <IconButton onClick={toggleDrawer} sx={{ color: 'black'}}>
+        <MenuIcon />
+       
+      </IconButton>
+
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={toggleDrawer}
+        PaperProps={{
+          sx: { width: '20vw', bgcolor: '#2F39B6' },
+        }}
+      >
+        <Box display="flex" flexDirection="column" height="100vh">
+          <Box  bgcolor="white" alignItems='center' justifyContent='space-between' height='10%'> 
+          <img src="/logo.png" alt="Logo" style={{ maxWidth: '100%',height:'100%' }} />
+          
+          </Box>
+          <Box mt={4}>
+            {menuItems.map((item) => (
+              <SidebarBox
+                key={item.name}
+                active={activeItem === item.name}
+                onClick={() => {
+                  setActiveItem(item.name);
+                  toggleDrawer();
+                }}
+              >
+                {item.icon}
+                <SidebarTypography variant="h6">{item.name}</SidebarTypography>
+              </SidebarBox>
+            ))}
+          </Box>
+          <SidebarBox sx={{ mt: 'auto' }} onClick={() => setActiveItem('Login')}>
+            <LogoutOutlined fontSize={'12px'} sx={{ color: 'white' }} />
+            <SidebarTypography variant="h6">Login</SidebarTypography>
           </SidebarBox>
-        ))}
-      </Box>
-      <SidebarBox sx={{ mt: 'auto' }} onClick={() => setActiveItem('Login')}>
-        <LogoutOutlined fontSize={'12px'} sx={{ color: 'white' }} />
-        <SidebarTypography variant="h6">Login</SidebarTypography>
-      </SidebarBox>
-    </Box>
+        </Box>
+      </Drawer>
+    </>
   );
 };
 

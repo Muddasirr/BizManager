@@ -3,13 +3,14 @@ import { Container, Box, Grid, Paper, Typography, IconButton, Button } from '@mu
 import { AccountBox, Group, FolderOpen, Logout,ArrowUpwardOutlined } from '@mui/icons-material';
 import Sidebar from './Sidebar';
 import SalesReportChart from './SalesReportChart';
-
+import Navbar from './NavBar';
 
 
 
 
 
 const Dashboard = () => {
+  
   const ButtonStyles = {
     textTransform: 'none',
     width: '100%',
@@ -25,10 +26,13 @@ const Dashboard = () => {
     <Box >
       <Box display="flex" justifyContent='space-between'>
 
-        <Sidebar />
+        
 
 
-        <Box width={'80vw'} flex={1} p={3}>
+        <Box  flex={1} >
+          <Navbar/>
+          <Box p={3} flex={1}>
+
           <Typography variant="h6" fontFamily={'sans-serif'} fontWeight={'600'} mb={2}>CTR File Migration Process</Typography>
 
           <Box display="flex" gap={3}>
@@ -105,6 +109,7 @@ const Dashboard = () => {
           </Box>
         </Box>
       </Box>
+    </Box>
     </Box>
   );
 };
