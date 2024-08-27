@@ -14,6 +14,7 @@ import {
   Paper,
   Button,
   Typography,
+  InputBase
 } from '@mui/material';
 import FolderIcon from '@mui/icons-material/Folder';
 import { FolderOutlined } from '@mui/icons-material';
@@ -40,7 +41,7 @@ const YearSelectionWithStepper = () => {
       <Box sx={{ margin: 'auto', mt: 3 }}>
         <Box ml={3} display='flex' justifyContent='space-between' alignItems='center'><Typography textAlign={'left'} fontSize={24} fontWeight={600}>Select Year</Typography>
         
-        <Box
+        { <Box
       
       sx={{
         p: '2px 4px',
@@ -48,7 +49,7 @@ const YearSelectionWithStepper = () => {
         alignItems: 'center',
         width: 300,
         borderRadius: '50px',
-        backgroundColor: '#F5F5F5',
+        backgroundColor: ' #F6F6F6',
         boxShadow: 'none',
       }}
     >
@@ -58,7 +59,7 @@ const YearSelectionWithStepper = () => {
         placeholder="Search for month"
         inputProps={{ 'aria-label': 'search for month' }}
       />
-    </Box></Box>
+    </Box>}</Box> 
         <TableContainer component={Paper}>
           <Table aria-label="year selection table">
             <TableBody>
