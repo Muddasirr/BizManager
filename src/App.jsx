@@ -6,8 +6,9 @@ import MyStepper from './NewClient';
 import ValidationComponent from './ValidationComponent';
 import ValidationFinalMappings from './FinalMappings'
 import YearSelectionWithStepper from './ViewFiles';
+import PayrollArchives from './PayrollArchives';
 const App = () => (
-  <YearSelectionWithStepper/>
+  <PayrollArchives/>
 );
 
 export default App;
