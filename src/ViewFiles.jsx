@@ -16,6 +16,7 @@ import {
   Typography,
   InputBase
 } from '@mui/material';
+import Navbar from './NavBar';
 import FolderIcon from '@mui/icons-material/Folder';
 import { FolderOutlined } from '@mui/icons-material';
 import DownloadIcon from '@mui/icons-material/Download';
@@ -27,7 +28,8 @@ const years = [2019, 2020, 2021, 2022, 2023];
 const YearSelectionWithStepper = () => {
   
 
-  return (
+  return (<Box>
+    <Navbar/>
     <Box sx={{ width: '100%', mt: 5, textAlign: 'center' }}>
       <Box sx={{ width: '60%', margin: 'auto' }}>
         <Stepper  alternativeLabel>
@@ -148,6 +150,7 @@ const YearSelectionWithStepper = () => {
         </Box>
         
       </Box>
+    </Box>
     </Box>
   );
 };

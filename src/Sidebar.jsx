@@ -50,6 +50,7 @@ const Sidebar = () => {
       </IconButton>
 
       <Drawer
+      onClick={()=>{}}
         anchor="left"
         open={drawerOpen}
         onClose={toggleDrawer}
