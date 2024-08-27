@@ -19,14 +19,21 @@ import {
 } from '@mui/material';
 import Navbar from './NavBar';
 import { CheckBoxOutlineBlank } from '@mui/icons-material';
+import { Autocomplete, TextField } from '@mui/material';
+
+
 
 const ValidationComponent = () => {
   const steps = ['Earnings and Memos', 'Deduction', 'Taxes'];
-
+  const options = [
+    { label: 'E_Regular_Hours', value: 'E_Regular_Hours' },
+    { label: 'E_Regular_Amount', value: 'E_Regular_Amount' },
+   
+  ];
   return (
     <Box alignItems="center" justifyContent="center">
       <Navbar />
-      <Box p={8}>
+      <Box px={32} py={6}>
         <Box sx={{ maxWidth: '400px', margin: 'auto' }}>
           <Stepper alternativeLabel activeStep={0}>
             {steps.map((label) => (
@@ -74,13 +81,13 @@ const ValidationComponent = () => {
 
         </Box>
         <Table>
-  <TableHead>
+  <TableHead sx={{background:'#f6f6f6',borderRadius:8}}>
     <TableRow sx={{ display: 'flex', justifyContent: 'space-between' }}>
-      <TableCell sx={{ textAlign: 'left', flex: 1, padding: '4px 8px', lineHeight: 1 }}><Typography fontWeight={600}>Extracted Header</Typography></TableCell>
-      <TableCell sx={{ textAlign: 'right', flex: 1, padding: '4px 8px', lineHeight: 1 }}><Typography fontWeight={600}>Final Mapped Hours</Typography></TableCell>
+      <TableCell sx={{ textAlign: 'left', flex: 1, padding: '4px 8px' }}><Typography fontWeight={600}>Extracted Header</Typography></TableCell>
+      <TableCell sx={{ textAlign: 'right', flex: 1, padding: '4px 8px' }}><Typography fontWeight={600}>Final Mapped Hours</Typography></TableCell>
     </TableRow>
   </TableHead>
-  <TableBody>
+  <TableBody >
     {[
       { header: 'Payments_regular_hours', status: 'mapped' },
       { header: 'Payments_regular_amount', status: 'unmapped' },
@@ -90,6 +97,7 @@ const ValidationComponent = () => {
       <TableRow
         key={index}
         sx={{
+          
           display: 'flex',
           justifyContent: 'space-between',
           backgroundColor:
@@ -98,13 +106,14 @@ const ValidationComponent = () => {
             row.status === 'predicted' ? '#ABE6C5' : 'white',
         }}
       >
-        <TableCell sx={{ textAlign: 'left',   lineHeight: 1}}><Typography fontWeight={600} >{row.header}</Typography></TableCell>
-        <TableCell sx={{ textAlign: 'right',  lineHeight: 1 }}>
-        <Select
+        <TableCell sx={{ textAlign: 'left', }}><Typography fontWeight={600} >{row.header}</Typography></TableCell>
+        <TableCell sx={{ textAlign: 'right'  }}>
+        {/* <Select
   defaultValue="E_Regular_Hours"
   size='small'
   
   sx={{
+    height:'5vh',
     width:'12.5vw',
     borderRadius:'8px',
     border: '1px',
@@ -114,8 +123,32 @@ const ValidationComponent = () => {
 >
             <MenuItem value="E_Regular_Hours">E_Regular_Hours</MenuItem>
             <MenuItem value="E_Regular_Amount">E_Regular_Amount</MenuItem>
-            {/* Add more options as needed */}
-          </Select>
+            </Select> */}
+           
+          <Autocomplete
+      options={options}
+      defaultValue={options[0]}
+      size="small"
+      getOptionLabel={(option) => option.label}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          variant="outlined"
+          sx={{
+            
+            width: '12.5vw',
+            borderRadius: '8px',
+            background: 'white',
+          }}
+        />
+      )}
+      sx={{
+        height: '5vh',
+        width: '12.5vw',
+        borderRadius: '8px',
+        background: 'white',
+      }}
+    />
         </TableCell>
       </TableRow>
     ))}

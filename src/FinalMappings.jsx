@@ -11,7 +11,6 @@ import {
     Paper,
     Pagination,
     Button,
-    PaginationItem
 } from '@mui/material';
 import Navbar from './NavBar';
 import { styled } from '@mui/system';
@@ -38,8 +37,8 @@ const CustomPagination = styled(Pagination)({
         }
     },
     '& .MuiPaginationItem-previousNext': {
-        backgroundColor: '#E7E8F4', // Background color for Previous/Next buttons
-        color: '#2F39B6', // Text color for Previous/Next buttons
+        backgroundColor: '#E7E8F4',
+        color: '#2F39B6',
         '&:hover': {
             backgroundColor: '#2F39B6',
             color: '#fff',
@@ -76,27 +75,27 @@ const ValidationFinalMappings = () => {
                 </Typography>
 
                 <Box sx={{ marginBottom: '24px' }}>
+                    <Typography variant="subtitle1" fontWeight="bold" sx={{ padding: '16px' }}>Earning And Memos</Typography>
                     <TableContainer component={Paper}>
-                        <Typography variant="subtitle1" fontWeight="bold" sx={{ padding: '16px' }}>Earning And Memos</Typography>
                         <Table>
-                            <TableHead>
+                            <TableHead sx={{ background: '#f0f0f0', border: '10px' }}>
                                 <TableRow>
-                                    <TableCell>Extracted Header</TableCell>
-                                    <TableCell>Final Mapped Hours</TableCell>
+                                    <TableCell sx={{ fontWeight: 400 }}>Extracted Header</TableCell>
+                                    <TableCell sx={{ fontWeight: 400 }}>Final Mapped Hours</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {earningAndMemosData.map((row, idx) => (
-                                    <TableRow key={idx}>
-                                        <TableCell>{row.extractedHeader}</TableCell>
-                                        <TableCell>{row.finalMappedHours}</TableCell>
+                                    <TableRow sx={{ background: idx % 2 === 0 ? 'white' : '#f0f0f0' }} key={idx}>
+                                        <TableCell sx={{ fontWeight: 400 }}>{row.extractedHeader}</TableCell>
+                                        <TableCell sx={{ fontWeight: 400 }}>{row.finalMappedHours}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
                     <Box mt={2}>
-                    <CustomPagination count={6} color="primary" />
+                        <CustomPagination count={6} color="primary" />
                     </Box>
                 </Box>
 
@@ -106,15 +105,15 @@ const ValidationFinalMappings = () => {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>Extracted Header</TableCell>
-                                    <TableCell>Final Mapped Hours</TableCell>
+                                    <TableCell sx={{ fontWeight: 400 }}>Extracted Header</TableCell>
+                                    <TableCell sx={{ fontWeight: 400 }}>Final Mapped Hours</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {deductionsData.map((row, idx) => (
-                                    <TableRow key={idx}>
-                                        <TableCell>{row.extractedHeader}</TableCell>
-                                        <TableCell>{row.finalMappedHours}</TableCell>
+                                    <TableRow sx={{ background: idx % 2 === 0 ? 'white' : '#f0f0f0' }} key={idx}>
+                                        <TableCell sx={{ fontWeight: 400 }}>{row.extractedHeader}</TableCell>
+                                        <TableCell sx={{ fontWeight: 400 }}>{row.finalMappedHours}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -128,15 +127,15 @@ const ValidationFinalMappings = () => {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>Extracted Header</TableCell>
-                                    <TableCell>Final Mapped Hours</TableCell>
+                                    <TableCell sx={{ fontWeight: 400 }}>Extracted Header</TableCell>
+                                    <TableCell sx={{ fontWeight: 400 }}>Final Mapped Hours</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {taxesData.map((row, idx) => (
-                                    <TableRow key={idx}>
-                                        <TableCell>{row.extractedHeader}</TableCell>
-                                        <TableCell>{row.finalMappedHours}</TableCell>
+                                    <TableRow sx={{ background: idx % 2 === 0 ? 'white' : '#f0f0f0' }} key={idx}>
+                                        <TableCell sx={{ fontWeight: 400 }}>{row.extractedHeader}</TableCell>
+                                        <TableCell sx={{ fontWeight: 400 }}>{row.finalMappedHours}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
