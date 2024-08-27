@@ -8,7 +8,7 @@ import ValidationFinalMappings from './FinalMappings'
 import YearSelectionWithStepper from './ViewFiles';
 import PayrollArchives from './PayrollArchives';
 const App = () => (
-  <PayrollArchives/>
+  <LoginForm/>
 );
 
 export default App;

@@ -31,13 +31,16 @@ const LoginForm = () => {
           </Typography>
         </Box>
 
-       
+       <Box bgcolor='white' width='50%' height='50%' borderRadius='50%' textAlign='center' alignContent={'center'} justifyContent='center'>
         <Box
+        width={'80%'}
+        height='50%'
           component="img"
-          src="path-to-your-logo.png"
+          src="logo.png"
           alt="Blue Ocean Logo"
-          sx={{ width: '60%', borderRadius: '50%' }}
+         
         />
+        </Box>
 
         
         <Box textAlign="center">
