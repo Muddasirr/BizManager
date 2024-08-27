@@ -3,10 +3,10 @@ import Dashboard from './Dashboard';
 import LoginForm from './Login'
 import SalesReportChart from './SalesReportChart';
 import MyStepper from './NewClient';
-
+import ValidationComponent from './ValidationComponent';
 
 const App = () => (
-  <MyStepper />
+  <ValidationComponent />
 );
 
 export default App;
