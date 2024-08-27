@@ -5,8 +5,9 @@ import SalesReportChart from './SalesReportChart';
 import MyStepper from './NewClient';
 import ValidationComponent from './ValidationComponent';
 import ValidationFinalMappings from './FinalMappings'
+import YearSelectionWithStepper from './ViewFiles';
 const App = () => (
-  <ValidationFinalMappings/>
+  <YearSelectionWithStepper/>
 );
 
 export default App;
